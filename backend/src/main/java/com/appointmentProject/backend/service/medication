@@ -1,0 +1,89 @@
+package com.appointmentProject.backend.model;
+ 
+import org.junit.jupiter.api.Test;
+ 
+import static org.junit.jupiter.api.Assertions.*;
+ 
+
+public class MedicationTest {
+ 
+    @Test
+    void testGetterAndSetter() {
+        // First set of test data
+        int id1 = 101;
+        String name1 = "Ibuprofen";
+        int manufacturerId1 = 1;
+        double strength1 = 200.5;
+        String type1 = "Tablet";
+        String consumption1 = "Oral";
+ 
+        // Second set of test data
+        int id2 = 202;
+        String name2 = "Acetaminophen";
+        int manufacturerId2 = 2;
+        double strength2 = 500.0;
+        String type2 = "Capsule";
+        String consumption2 = "Oral";
+ 
+        // Construct using the public constructor
+        Medication medication = new Medication(
+                id1,
+                name1,
+                manufacturerId1,
+                strength1,
+                type1,
+                consumption1
+        );
+ 
+        // Getter tests for first set
+        assertAll(
+                () -> assertEquals(id1, medication.getId()),
+                () -> assertEquals(name1, medication.getMedName()),
+                () -> assertEquals(manufacturerId1, medication.getManufacturerId()),
+                () -> assertEquals(strength1, medication.getStrength()),
+                () -> assertEquals(type1, medication.getType()),
+                () -> assertEquals(consumption1, medication.getConsumption())
+        );
+ 
+        // Mutate using setters
+        medication.setId(id2);
+        medication.setMedName(name2);
+        medication.setManufacturerId(manufacturerId2);
+        medication.setStrength(strength2);
+        medication.setType(type2);
+        medication.setConsumption(consumption2);
+ 
+        // Getter tests for second set
+        assertAll(
+                () -> assertEquals(id2, medication.getId()),
+                () -> assertEquals(name2, medication.getMedName()),
+                () -> assertEquals(manufacturerId2, medication.getManufacturerId()),
+                () -> assertEquals(strength2, medication.getStrength()),
+                () -> assertEquals(type2, medication.getType()),
+                () -> assertEquals(consumption2, medication.getConsumption())
+        );
+    }
+ 
+    @Test
+    void testToString() {
+        Medication medication = new Medication(
+                300,
+                "Amoxicillin",
+                5,
+                250.0,
+                "Capsule",
+                "Oral"
+        );
+ 
+        String expected =
+                "Medication:" +
+                "\nMed ID: 300" +
+                "\nMed Name: Amoxicillin" +
+                "\nManufacturer id: 5" +
+                "\nStrength: 250.0" +
+                "\nType of Medication: Capsule" +
+                "\nConsumption Method: Oral\n";
+ 
+        assertEquals(expected, medication.toString());
+    }
+}
