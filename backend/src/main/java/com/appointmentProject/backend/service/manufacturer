@@ -1,0 +1,74 @@
+package com.appointmentProject.backend.model;
+ 
+import org.junit.jupiter.api.Test;
+ 
+import static org.junit.jupiter.api.Assertions.*;
+ 
+public class ManufacturerTest {
+ 
+    @Test
+    void testGetterAndSetter() {
+        // First set of test data
+        int id1 = 1;
+        String name1 = "Pfizer";
+        String phone1 = "4145551234";
+        String email1 = "contact@pfizer.com";
+        String address1 = "235 E Main St, Milwaukee, WI";
+ 
+        // Second set of test data
+        int id2 = 2;
+        String name2 = "Moderna";
+        String phone2 = "2625559876";
+        String email2 = "info@moderna.com";
+        String address2 = "100 Innovation Way, Madison, WI";
+ 
+        // Construct using constructor
+        Manufacturer manufacturer = new Manufacturer(id1, name1, phone1, email1, address1);
+ 
+        // Getter tests for first set
+        assertAll(
+                () -> assertEquals(id1, manufacturer.getId()),
+                () -> assertEquals(name1, manufacturer.getManufacturerName()),
+                () -> assertEquals(phone1, manufacturer.getPhone()),
+                () -> assertEquals(email1, manufacturer.getEmail()),
+                () -> assertEquals(address1, manufacturer.getAddress())
+        );
+ 
+        // Mutate using setters
+        manufacturer.setId(id2);
+        manufacturer.setManufacturerName(name2);
+        manufacturer.setPhone(phone2);
+        manufacturer.setEmail(email2);
+        manufacturer.setAddress(address2);
+ 
+        // Getter tests for second set
+        assertAll(
+                () -> assertEquals(id2, manufacturer.getId()),
+                () -> assertEquals(name2, manufacturer.getManufacturerName()),
+                () -> assertEquals(phone2, manufacturer.getPhone()),
+                () -> assertEquals(email2, manufacturer.getEmail()),
+                () -> assertEquals(address2, manufacturer.getAddress())
+        );
+    }
+ 
+    @Test
+    void testToString() {
+        Manufacturer manufacturer = new Manufacturer(
+                10,
+                "AstraZeneca",
+                "5550001234",
+                "support@astrazeneca.com",
+                "1 Healthcare Plaza, Chicago, IL"
+        );
+ 
+        String expected =
+                "Manufacturer:\n" +
+                "\nMN id: 10" +
+                "\n manufacturer name: AstraZeneca" +
+                "\n phone: 5550001234" +
+                "\n email: support@astrazeneca.com" +
+                "\n address: 1 Healthcare Plaza, Chicago, IL\n";
+ 
+        assertEquals(expected, manufacturer.toString());
+    }
+}
