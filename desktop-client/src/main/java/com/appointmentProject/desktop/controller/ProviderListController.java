@@ -159,9 +159,7 @@ public class ProviderListController {
             return;
         }
 
-        // TODO: Later we will:
-        //  - store selected provider ID somewhere (like EditProviderController.selectedId)
-        //  - SceneNavigator.switchTo("/fxml/edit_provider.fxml");
-        messageLabel.setText("Edit Provider: not implemented yet (selected ID: " + row.getId() + ")");
+        ProviderEditController.selectedProviderId = row.getId();
+        SceneNavigator.switchTo("/fxml/provider_edit.fxml");
     }
 }

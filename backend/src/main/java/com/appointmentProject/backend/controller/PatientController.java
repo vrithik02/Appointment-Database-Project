@@ -39,7 +39,7 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> getById(@PathVariable int id) {
+    public ResponseEntity<Patient> getById(@PathVariable("id") int id) {
         return patientService.getPatientById(id)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() ->
@@ -59,7 +59,7 @@ public class PatientController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deletePatient(@PathVariable int id) {
+    public ResponseEntity<String> deletePatient(@PathVariable("id") int id) {
         return patientService.getPatientById(id)
                 .map(existing -> {
                     patientService.removePatient(existing);

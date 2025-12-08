@@ -5,7 +5,7 @@
  *          employed nurses.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 12/6/2025
  ********************************************************************/
 package com.appointmentProject.desktop.controller;
@@ -131,7 +131,7 @@ public class NurseListController {
 
     @FXML
     public void handleCreateNurse() {
-        messageLabel.setText("Create Nurse: not implemented yet.");
+        SceneNavigator.switchTo("/fxml/nurse_create.fxml");
     }
 
     @FXML
@@ -142,6 +142,7 @@ public class NurseListController {
             return;
         }
 
-        messageLabel.setText("Edit Nurse: not implemented yet (selected ID: " + row.getId() + ")");
+        NurseEditController.selectedNurseId = row.getId();
+        SceneNavigator.switchTo("/fxml/nurse_edit.fxml");
     }
 }

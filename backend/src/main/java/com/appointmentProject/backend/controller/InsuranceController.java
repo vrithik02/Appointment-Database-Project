@@ -47,7 +47,7 @@ public class InsuranceController {
 
     //Get By ID
     @GetMapping("/{id}")
-    public ResponseEntity<Insurance> getById(@PathVariable int id) {
+    public ResponseEntity<Insurance> getById(@PathVariable("id") int id) {
         return insService.getInsuranceById(id)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new RecordNotFoundException(
@@ -71,7 +71,7 @@ public class InsuranceController {
 
     // Remove Insurance
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteInsurance(@PathVariable int id) {
+    public ResponseEntity<String> deleteInsurance(@PathVariable("id") int id) {
 
         // Step 1: Check existence
         return insService.getInsuranceById(id)

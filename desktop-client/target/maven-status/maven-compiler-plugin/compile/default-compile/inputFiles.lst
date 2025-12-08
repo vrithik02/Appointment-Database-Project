@@ -2,6 +2,7 @@ C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\app
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\EditAccountEmailController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\SceneNavigator.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\EditPasswordController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\NurseEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ManageNursesController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\NurseDashboardController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\NurseListController.java
@@ -11,10 +12,13 @@ C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\app
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ManageStaffController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\SessionData.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ProviderDashboardController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ProviderEditController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\NurseCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\model\UserDTO.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\CreateUserController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\DesktopApp.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\model\User.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ViewStaffController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ProviderCreateController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ProviderListController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\ReceptionistDashboardController.java

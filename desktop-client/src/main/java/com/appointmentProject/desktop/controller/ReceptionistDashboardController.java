@@ -5,7 +5,7 @@
  *      type a "home" page.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 12/3/2025
  **************************************************************************/
 package com.appointmentProject.desktop.controller;
@@ -25,6 +25,13 @@ public class ReceptionistDashboardController {
         AccountManagementController.setPreviousPage("/fxml/receptionist_dashboard.fxml");
         SceneNavigator.switchTo("/fxml/account_management.fxml");
     }
+
+    @FXML
+    public void handleViewStaff() {
+        ViewStaffController.previousPage = "/fxml/receptionist_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/view_staff.fxml");
+    }
+
 
     @FXML
     private void handleLogout() {

@@ -35,7 +35,7 @@ public class ProviderController {
 
     // Get one provider
     @GetMapping("/{id}")
-    public ResponseEntity<Provider> getProvider(@PathVariable int id) {
+    public ResponseEntity<Provider> getProvider(@PathVariable("id") int id) {
         return ResponseEntity.ok(providerService.getProviderById(id));
     }
 
@@ -48,15 +48,16 @@ public class ProviderController {
     // Update provider
     @PutMapping("/update/{id}")
     public ResponseEntity<Provider> updateProvider(
-            @PathVariable int id,
+            @PathVariable("id") int id,
             @RequestBody Provider provider
     ) {
         return ResponseEntity.ok(providerService.updateProvider(id, provider));
     }
 
+
     // Delete provider
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProvider(@PathVariable int id) {
+    public ResponseEntity<String> deleteProvider(@PathVariable("id") int id) {
         providerService.deleteProvider(id);
         return ResponseEntity.ok("Provider deleted.");
     }

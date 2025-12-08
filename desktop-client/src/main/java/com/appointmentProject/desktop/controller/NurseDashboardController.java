@@ -20,7 +20,7 @@ package com.appointmentProject.desktop.controller;
  *          type.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 12/3/2025
  ********************************************************************/
 import com.appointmentProject.desktop.SceneNavigator;
@@ -43,6 +43,13 @@ public class NurseDashboardController {
         AccountManagementController.setPreviousPage("/fxml/nurse_dashboard.fxml");
         SceneNavigator.switchTo("/fxml/account_management.fxml");
     }
+
+    @FXML
+    public void handleViewStaff() {
+        ViewStaffController.previousPage = "/fxml/nurse_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/view_staff.fxml");
+    }
+
 
 
     @FXML

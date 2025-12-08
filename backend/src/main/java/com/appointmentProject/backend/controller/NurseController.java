@@ -33,10 +33,11 @@ public class NurseController {
 
     // 2. Get one nurse by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Nurse> getNurseById(@PathVariable int id) {
+    public ResponseEntity<Nurse> getNurseById(@PathVariable("id") int id) {
         Nurse nurse = nurseService.getById(id);
         return ResponseEntity.ok(nurse);
     }
+
 
     // 3. Create nurse
     @PostMapping("/add")
@@ -48,7 +49,7 @@ public class NurseController {
     // 4. Update nurse
     @PutMapping("/update/{id}")
     public ResponseEntity<Nurse> updateNurse(
-            @PathVariable int id,
+            @PathVariable("id") int id,
             @RequestBody Nurse nurse
     ) {
         Nurse updated = nurseService.updateNurse(id, nurse);
@@ -57,7 +58,7 @@ public class NurseController {
 
     // 5. Delete nurse
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteNurse(@PathVariable int id) {
+    public ResponseEntity<String> deleteNurse(@PathVariable("id") int id) {
         nurseService.deleteNurse(id);
         return ResponseEntity.ok("Nurse deleted successfully.");
     }
