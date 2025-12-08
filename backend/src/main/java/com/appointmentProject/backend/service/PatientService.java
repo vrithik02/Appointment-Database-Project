@@ -5,7 +5,7 @@
  *
  * @author Matthew Kiyono
  * @since 12/4/2025
- * @version 1.0
+ * @version 1.1
  ******************************************************************************************************************/
 package com.appointmentProject.backend.service;
 
@@ -26,8 +26,25 @@ public class PatientService {
     PatientRepository patientRepo;
 
     // INSERT
-    public Patient addPatient(Patient patient) {
-        return patientRepo.save(patient);
+    public Patient addPatient(Patient p) {
+
+        // 1. Unique first + last name
+        List<Patient> existing = patientRepo.findByLastName(p.getLastName());
+        for (Patient x : existing) {
+            if (x.getFirstName().equalsIgnoreCase(p.getFirstName())) {
+                throw new IllegalArgumentException("Duplicate patient name.");
+            }
+        }
+
+        // 2. Age ≥ 0
+        if (p.getAge() < 0)
+            throw new IllegalArgumentException("Age must be ≥ 0");
+
+        // 3. Height/Weight > 0
+        if (p.getHeight() <= 0 || p.getWeight() <= 0)
+            throw new IllegalArgumentException("Invalid height/weight");
+
+        return patientRepo.save(p);
     }
 
     // DELETE

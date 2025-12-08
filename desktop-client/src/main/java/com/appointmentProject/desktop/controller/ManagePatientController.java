@@ -7,7 +7,7 @@
  *
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 12/7/2025
  ********************************************************************/
 package com.appointmentProject.desktop.controller;
@@ -32,6 +32,7 @@ public class ManagePatientController {
 
     // --- Navigation tracking  --------------
     public static String previousPage = "/fxml/login.fxml";
+    public static int selectedPatientId = -1;
 
     // --- FXML table fields ---------------------------------------------
     @FXML private TableView<PatientRow> patientTable;
@@ -76,8 +77,12 @@ public class ManagePatientController {
     }
 
     // --- Initialize ----------------------------------------------------
+
+    @FXML private Button createPatientButton;
+
     @FXML
     private void initialize() {
+
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -86,6 +91,34 @@ public class ManagePatientController {
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
         loadPatients();
+        //THIS IS TO INCORPORATE DOUBLE-CLICKING AS A SELECTION OPTION!
+        patientTable.setRowFactory(table -> {
+            TableRow<PatientRow> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    PatientRow selected = row.getItem();
+
+                    selectedPatientId = selected.getId();
+                    SceneNavigator.switchTo("/fxml/patient_details.fxml");
+                }
+            });
+
+            return row;
+        });
+
+        // Determine visibility based on who came from which dashboard
+        if (previousPage.equals("/fxml/admin_dashboard.fxml") ||
+                previousPage.equals("/fxml/receptionist_dashboard.fxml")) {
+
+            createPatientButton.setVisible(true);
+            createPatientButton.setManaged(true);
+
+        } else {
+            createPatientButton.setVisible(false);
+            createPatientButton.setManaged(false);
+        }
+
     }
 
     // --- Load Patients From Backend -----------------------------------
@@ -135,6 +168,25 @@ public class ManagePatientController {
     }
 
     // --- Button Handlers -----------------------------
+
+    @FXML
+    public void handleViewPatient() {
+        PatientRow row = patientTable.getSelectionModel().getSelectedItem();
+
+        if (row == null) {
+            messageLabel.setText("Please select a patient to view.");
+            return;
+        }
+
+        selectedPatientId = row.getId();
+        SceneNavigator.switchTo("/fxml/patient_details.fxml");
+    }
+
+    @FXML
+    public void handleCreatePatient() {
+        SceneNavigator.switchTo("/fxml/patient_create.fxml");
+    }
+
     @FXML
     public void handleBack() {
         SceneNavigator.switchTo(previousPage);

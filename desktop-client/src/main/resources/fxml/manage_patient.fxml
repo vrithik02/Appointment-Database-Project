@@ -13,9 +13,8 @@
 
     <Label text="Manage Patients" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
 
-    <!-- NEW: Patient Table -->
+    <!-- TABLE -->
     <TableView fx:id="patientTable" prefHeight="300" prefWidth="700">
-
         <columns>
 
             <TableColumn fx:id="idCol" text="ID" prefWidth="70"/>
@@ -26,10 +25,20 @@
             <TableColumn fx:id="phoneCol" text="Phone" prefWidth="120"/>
 
         </columns>
-
     </TableView>
 
     <Label fx:id="messageLabel" text="" style="-fx-text-fill: red;"/>
+
+    <Button fx:id="createPatientButton"
+            text="Create Patient"
+            onAction="#handleCreatePatient"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
+    <!-- NEW VIEW BUTTON -->
+    <Button text="View Patient"
+            onAction="#handleViewPatient"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
 
     <!-- BACK BUTTON -->
     <HBox alignment="CENTER" spacing="10">
