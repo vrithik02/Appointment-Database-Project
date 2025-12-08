@@ -5,14 +5,13 @@
  *
  * @author Matthew Kiyono
  * @since 12/4/2025
- * @version 1.1
+ * @version 1.2
  ******************************************************************************************************************/
 package com.appointmentProject.backend.service;
 
 import com.appointmentProject.backend.exception.RecordNotFoundException;
 import com.appointmentProject.backend.model.Patient;
 import com.appointmentProject.backend.repository.PatientRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,25 +25,10 @@ public class PatientService {
     PatientRepository patientRepo;
 
     // INSERT
-    public Patient addPatient(Patient p) {
+    public Patient addPatient(Patient patient) {
 
-        // 1. Unique first + last name
-        List<Patient> existing = patientRepo.findByLastName(p.getLastName());
-        for (Patient x : existing) {
-            if (x.getFirstName().equalsIgnoreCase(p.getFirstName())) {
-                throw new IllegalArgumentException("Duplicate patient name.");
-            }
-        }
-
-        // 2. Age ≥ 0
-        if (p.getAge() < 0)
-            throw new IllegalArgumentException("Age must be ≥ 0");
-
-        // 3. Height/Weight > 0
-        if (p.getHeight() <= 0 || p.getWeight() <= 0)
-            throw new IllegalArgumentException("Invalid height/weight");
-
-        return patientRepo.save(p);
+        validatePatientCore(patient, true);
+        return patientRepo.save(patient);
     }
 
     // DELETE
@@ -61,6 +45,9 @@ public class PatientService {
                     "Patient with ID " + update.getId() + " was not found."
             );
         }
+
+        // Validate rules (unique name, age, height/weight, null-allowed fields)
+        validatePatientCore(update, false);
 
         Patient current = exists.get();
 
@@ -109,5 +96,48 @@ public class PatientService {
 
     public List<Patient> getByInsuranceId(Integer insuranceId) {
         return patientRepo.findByInsuranceId(insuranceId);
+    }
+
+
+    // Validation shared by add + update
+    private void validatePatientCore(Patient p, boolean isNew) {
+
+        // Required fields: firstName, lastName, DoB, age, weight, height, phone
+        if (p.getFirstName() == null || p.getFirstName().isBlank()) {
+            throw new IllegalArgumentException("First name is required.");
+        }
+        if (p.getLastName() == null || p.getLastName().isBlank()) {
+            throw new IllegalArgumentException("Last name is required.");
+        }
+        if (p.getDoB() == null) {
+            throw new IllegalArgumentException("Date of Birth is required.");
+        }
+        if (p.getPhone() == null || p.getPhone().isBlank()) {
+            throw new IllegalArgumentException("Phone is required.");
+        }
+
+        if (p.getAge() < 0) {
+            throw new IllegalArgumentException("Age cannot be negative.");
+        }
+        if (p.getWeight() <= 0) {
+            throw new IllegalArgumentException("Weight must be greater than 0.");
+        }
+        if (p.getHeight() <= 0) {
+            throw new IllegalArgumentException("Height must be greater than 0.");
+        }
+
+        // Only gender, email, insuranceId, emergencyContactId can be null
+        // (no extra checks needed here as long as we don't allow nulls elsewhere)
+
+        // Unique firstName + lastName combo
+        List<Patient> sameLast = patientRepo.findByLastName(p.getLastName());
+        for (Patient other : sameLast) {
+            boolean sameFirst = other.getFirstName().equalsIgnoreCase(p.getFirstName());
+            if (sameFirst) {
+                if (isNew || other.getId() != p.getId()) {
+                    throw new IllegalArgumentException("First and last name combination must be unique.");
+                }
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@
  *          allowing the user to edit the Patient's details.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 12/7/2025
  ********************************************************************/
 package com.appointmentProject.desktop.controller;
@@ -16,7 +16,7 @@ import com.appointmentProject.desktop.SceneNavigator;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -39,9 +39,17 @@ public class PatientDetailsController {
     @FXML private Label emergencyContactLabel;
     @FXML private Label messageLabel;
 
+    @FXML private Button updateButton;
+    @FXML private Button deleteButton;
+
     @FXML
     private void initialize() {
         loadPatientDetails();
+
+        if (!ManagePatientController.previousPage.equals("/fxml/admin_dashboard.fxml")) {
+            deleteButton.setVisible(false);
+            deleteButton.setManaged(false);
+        }
     }
 
     private void loadPatientDetails() {
@@ -54,7 +62,6 @@ public class PatientDetailsController {
 
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             StringBuilder sb = new StringBuilder();
-
             String line;
             while ((line = in.readLine()) != null) sb.append(line);
             in.close();
@@ -74,7 +81,6 @@ public class PatientDetailsController {
 
             insuranceLabel.setText(obj.get("insuranceId").isJsonNull()
                     ? "None" : obj.get("insuranceId").getAsString());
-
             emergencyContactLabel.setText(obj.get("emergencyContactId").isJsonNull()
                     ? "None" : obj.get("emergencyContactId").getAsString());
 
@@ -87,5 +93,47 @@ public class PatientDetailsController {
     @FXML
     public void handleBack() {
         SceneNavigator.switchTo("/fxml/manage_patient.fxml");
+    }
+
+    @FXML
+    public void handleUpdate() {
+        SceneNavigator.switchTo("/fxml/patient_edit.fxml");
+    }
+
+    @FXML
+    public void handleDelete() {
+        String fullName = firstNameLabel.getText() + " " + lastNameLabel.getText();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Patient");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to delete Patient " + fullName + "?");
+
+        alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+
+        var result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            try {
+                int id = Integer.parseInt(idLabel.getText());
+                URL url = new URL("http://localhost:8080/patient/delete/" + id);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("DELETE");
+
+                int status = con.getResponseCode();
+                if (status == 200) {
+
+                    ManagePatientController.deletionMessage =
+                            "Patient " + fullName + " was successfully deleted.";
+
+                    SceneNavigator.switchTo("/fxml/manage_patient.fxml");
+                } else {
+                    messageLabel.setText("Failed to delete patient. (HTTP " + status + ")");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                messageLabel.setText("Error deleting patient.");
+            }
+        }
     }
 }
