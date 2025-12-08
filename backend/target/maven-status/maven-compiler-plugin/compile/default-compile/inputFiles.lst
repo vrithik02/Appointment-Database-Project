@@ -4,6 +4,7 @@ C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmen
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\Application.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\repository\AccountRepository.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\LabOrderController.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\PharmacyController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Patient.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Appointment.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\AuthService.java
@@ -40,6 +41,7 @@ C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmen
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\ProviderService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\EmergencyContactController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\util\PhoneNumberFormatter.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\PharmacyService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\EmergencyContactService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\LabOrder.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\PatientService.java
