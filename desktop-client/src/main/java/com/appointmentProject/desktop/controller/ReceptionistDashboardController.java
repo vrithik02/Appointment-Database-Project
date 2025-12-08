@@ -1,15 +1,11 @@
 /*************************************************************************
  *  ReceptionistDashboardController.java
  *
- *      This Class acts as the caller to the backend for specific data.
- *      It will first connect each table column to a respective field in
- *      a specified table. Using API client, it will talk to Spring Boot
- *      backend. It will receive a response (in JSON format) and turn it
- *      into a Java object. Afterwards it will display the obejcts into
- *      a table for display.
+ *      This controller is responsible for providing the Receptionist user
+ *      type a "home" page.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 1.1
  * @since 12/3/2025
  **************************************************************************/
 package com.appointmentProject.desktop.controller;
@@ -29,6 +25,13 @@ public class ReceptionistDashboardController {
         AccountManagementController.setPreviousPage("/fxml/receptionist_dashboard.fxml");
         SceneNavigator.switchTo("/fxml/account_management.fxml");
     }
+
+    @FXML
+    public void handleViewStaff() {
+        ViewStaffController.previousPage = "/fxml/receptionist_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/view_staff.fxml");
+    }
+
 
     @FXML
     private void handleLogout() {
