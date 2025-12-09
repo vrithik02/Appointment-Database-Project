@@ -7,6 +7,7 @@
  * @since 12/8/2025
  * @version 1.0
  ******************************************************************************************************************/
+/*
 package com.appointmentProject.backend.service;
 
 import com.appointmentProject.backend.exception.RecordNotFoundException;
@@ -68,3 +69,4 @@ public class PharmacyService {
         pharmacyRepo.deleteById(id);
     }
 }
+*/
