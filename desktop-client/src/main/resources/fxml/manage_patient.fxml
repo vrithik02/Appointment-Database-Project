@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox spacing="20" alignment="TOP_CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.ManagePatientController"
+      style="-fx-padding: 20 60 20 60;">
+
+    <Label text="Manage Patients"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <!-- Unified Search Bar -->
+    <TextField fx:id="searchField"
+               promptText="Search patients..."
+               style="-fx-font-size: 14px; -fx-padding: 6; -fx-min-width: 300px;"/>
+
+    <!-- Patient Table -->
+    <TableView fx:id="patientTable" prefHeight="500">
+
+        <columns>
+            <TableColumn fx:id="idCol" text="ID"/>
+            <TableColumn fx:id="firstNameCol" text="First Name"/>
+            <TableColumn fx:id="lastNameCol" text="Last Name"/>
+            <TableColumn fx:id="dobCol" text="DoB"/>
+            <TableColumn fx:id="emailCol" text="Email"/>
+            <TableColumn fx:id="phoneCol" text="Phone"/>
+        </columns>
+
+    </TableView>
+
+    <!-- Create Patient Button (Role-Based Visibility in Controller) -->
+    <Button fx:id="createPatientButton"
+            text="Create Patient"
+            onAction="#handleCreatePatient"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
+    <!-- Back Button -->
+    <HBox alignment="CENTER">
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+    </HBox>
+
+</VBox>

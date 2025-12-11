@@ -1,13 +1,3 @@
-package com.appointmentProject.backend.repository;
-
-import com.appointmentProject.backend.model.Insurance;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.data.repository.query.Param;
-import java.util.List;
-
-
-
 /********************************************************************************************
  *     InsuranceRepository
  *      The repository interface involving Insurance.
@@ -33,6 +23,13 @@ import java.util.List;
  * @since 11/9/2025
  *
  ********************************************************************************************/
+package com.appointmentProject.backend.repository;
+
+import com.appointmentProject.backend.model.Insurance;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.query.Param;
+import java.util.List;
 
 @Repository
 public interface InsuranceRepository extends JpaRepository<Insurance, Integer> {

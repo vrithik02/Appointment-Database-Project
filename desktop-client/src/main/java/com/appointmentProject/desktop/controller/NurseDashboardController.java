@@ -13,8 +13,18 @@
  * @since 12/3/2025
  **************************************************************************/
 package com.appointmentProject.desktop.controller;
-
+/********************************************************************
+ *  NurseDashboardController.java
+ *
+ *          This controller provides a homepage for the Nurse user
+ *          type.
+ *
+ * @author Matthew Kiyono
+ * @version 1.1
+ * @since 12/3/2025
+ ********************************************************************/
 import com.appointmentProject.desktop.SceneNavigator;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -35,6 +45,17 @@ public class NurseDashboardController {
         SceneNavigator.switchTo("/fxml/account_management.fxml");
     }
 
+    @FXML
+    public void handleViewStaff() {
+        ViewStaffController.previousPage = "/fxml/nurse_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/view_staff.fxml");
+    }
+
+    @FXML
+    private void handleManagePatients(ActionEvent event) {
+        ManagePatientController.previousPage = "/fxml/nurse_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/manage_patient.fxml");
+    }
 
     @FXML
     private void handleLogout() {

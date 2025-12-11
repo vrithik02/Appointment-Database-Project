@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -10,7 +10,6 @@
       alignment="CENTER"
       spacing="20">
 
-    <!-- 🔹 TOP BAR (Manage Account Button) -->
     <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 10 10 0 10;" prefWidth="9999">
         <Button text="Manage Account"
                 onAction="#handleManageAccount"
@@ -20,7 +19,14 @@
     <Label text="Receptionist Dashboard"
            style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
-    <Label text="(Placeholder — Receptionist tools coming soon)" />
+    <Button text="View Staff"
+            onAction="#handleViewStaff"
+            style="-fx-font-size: 16px; -fx-padding: 8 16;" />
+
+    <Button text="Manage Patients"
+            onAction="#handleManagePatients"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 
     <Button text="Log Out" onAction="#handleLogout"/>
+
 </VBox>

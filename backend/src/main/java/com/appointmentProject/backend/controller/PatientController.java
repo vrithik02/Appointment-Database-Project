@@ -1,3 +1,13 @@
+
+/********************************************************************************************************
+ * PatientController.java
+ *
+ *          Handles Patient related requests.
+ *
+ * @author Matthew Kiyono
+ * @since 12/4/2025
+ * @version 1.1
+ ********************************************************************************************************/
 package com.appointmentProject.backend.controller;
 
 import com.appointmentProject.backend.exception.RecordNotFoundException;
@@ -10,15 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/********************************************************************************************************
- * PatientController.java
- *
- *          Handles Patient related requests.
- *
- * @author Matthew Kiyono
- * @since 12/4/2025
- * @version 1.0
- ********************************************************************************************************/
 @RestController
 @RequestMapping("/patient")
 @CrossOrigin(origins = "*")
@@ -39,7 +40,7 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> getById(@PathVariable int id) {
+    public ResponseEntity<Patient> getById(@PathVariable("id") int id) {
         return patientService.getPatientById(id)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() ->
@@ -59,7 +60,7 @@ public class PatientController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deletePatient(@PathVariable int id) {
+    public ResponseEntity<String> deletePatient(@PathVariable("id") int id) {
         return patientService.getPatientById(id)
                 .map(existing -> {
                     patientService.removePatient(existing);

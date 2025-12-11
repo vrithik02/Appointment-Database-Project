@@ -1,14 +1,3 @@
-package com.appointmentProject.backend.controller;
-
-import com.appointmentProject.backend.model.Insurance;
-import com.appointmentProject.backend.service.InsuranceService;
-import com.appointmentProject.backend.exception.RecordNotFoundException;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /********************************************************************************************************
  * InsuranceController.java
@@ -21,8 +10,21 @@ import java.util.List;
  *          - Return the service’s results as HTTP responses
  *
  * @author Matthew Kiyono
+ * @version 11/13/2025
  * @version 1.0
  ********************************************************************************************************/
+package com.appointmentProject.backend.controller;
+
+import com.appointmentProject.backend.model.Insurance;
+import com.appointmentProject.backend.service.InsuranceService;
+import com.appointmentProject.backend.exception.RecordNotFoundException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/insurance")
@@ -47,7 +49,7 @@ public class InsuranceController {
 
     //Get By ID
     @GetMapping("/{id}")
-    public ResponseEntity<Insurance> getById(@PathVariable int id) {
+    public ResponseEntity<Insurance> getById(@PathVariable("id") int id) {
         return insService.getInsuranceById(id)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() -> new RecordNotFoundException(
@@ -71,7 +73,7 @@ public class InsuranceController {
 
     // Remove Insurance
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteInsurance(@PathVariable int id) {
+    public ResponseEntity<String> deleteInsurance(@PathVariable("id") int id) {
 
         // Step 1: Check existence
         return insService.getInsuranceById(id)
