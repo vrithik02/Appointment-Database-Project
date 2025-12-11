@@ -33,6 +33,10 @@
             onAction="#handleManagePatients"
             style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 
+    <Button text="Manage Medications"
+            onAction="#handleMedications"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
     <Button text="Log Out"
             onAction="#handleLogout" />
 
