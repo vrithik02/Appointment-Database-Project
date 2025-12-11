@@ -1,0 +1,48 @@
+package com.appointmentProject.desktop.controller;
+
+import com.appointmentProject.desktop.SceneNavigator;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+public class MedicationCreateController {
+
+@FXML private TableView<?> table;
+@FXML private TableColumn<?, ?> idCol;
+@FXML private TableColumn<?, ?> nameCol;
+@FXML private TableColumn<?, ?> strengthCol;
+@FXML private TableColumn<?, ?> typeCol;
+@FXML private TableColumn<?, ?> consumptionCol;
+
+@FXML private TextField searchField;
+@FXML private Label messageLabel;
+
+@FXML private Button createButton;
+@FXML private Button editButton;
+@FXML private Button deleteButton;
+
+
+    @FXML
+    public void handleSave() {
+        // Basic validation so the user can't save empty values
+        if (nameField.getText().isEmpty() ||
+            strengthField.getText().isEmpty() ||
+            typeField.getText().isEmpty() ||
+            consumptionField.getText().isEmpty()) {
+
+            messageLabel.setText("All fields are required.");
+            return;
+        }
+
+        // TEMPORARY: frontend-only logic
+        messageLabel.setText("Medication created successfully!");
+
+        // Go back to the list after saving (matches your CRUD flow)
+        SceneNavigator.switchTo("/fxml/Medication_list.fxml");
+    }
+
+    @FXML
+    public void handleCancel() {
+        SceneNavigator.switchTo("/fxml/Medication_list.fxml");
+    }
+}
