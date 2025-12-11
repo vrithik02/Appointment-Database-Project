@@ -50,13 +50,12 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private void handleLogout() {
-        SceneNavigator.switchTo("/fxml/login.fxml");
-    }
-
-    @FXML
     private void handleMedications() {
         SceneNavigator.switchTo("/fxml/Medication_list.fxml");
     }
 
+    @FXML
+    private void handleLogout() {
+        SceneNavigator.switchTo("/fxml/login.fxml");
+    }
 }
