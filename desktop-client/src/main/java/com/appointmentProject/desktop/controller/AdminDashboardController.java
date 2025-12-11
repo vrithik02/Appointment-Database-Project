@@ -42,7 +42,6 @@ public class AdminDashboardController {
     public void handleManageStaff() {
         SceneNavigator.switchTo("/fxml/manage_staff.fxml");
     }
-
     @FXML
     private void handleManagePatients(ActionEvent event) {
         ManagePatientController.previousPage = "/fxml/admin_dashboard.fxml";
@@ -58,4 +57,5 @@ public class AdminDashboardController {
     private void handleMedications() {
         SceneNavigator.switchTo("/fxml/Medication_list.fxml");
     }
+
 }
