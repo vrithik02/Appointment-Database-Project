@@ -1,3 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.appointmentProject.desktop.controller.MedicationListController"
@@ -5,6 +10,45 @@
       spacing="20"
       style="-fx-padding: 20;">
 
+    <!-- Top row: CRUD + Back buttons -->
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Create Medication"
+                fx:id="createButton"
+                onAction="#handleCreate"/>
+        <Button text="Edit Medication"
+                fx:id="editButton"
+                onAction="#handleEdit"/>
+        <Button text="Delete"
+                fx:id="deleteButton"
+                onAction="#handleDelete"/>
+        <Button text="Back"
+                onAction="#handleBack"/>
+    </HBox>
+
+    <!-- Search bar -->
+    <TextField fx:id="searchField"
+               promptText="Search medications..."
+               maxWidth="300"/>
+
+    <!-- Message label (errors / status) -->
+    <Label fx:id="messageLabel"
+           textFill="red"
+           style="-fx-font-size: 14px;"/>
+
+    <!-- Title -->
+    <Label text="Medication List"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <!-- Table of medications -->
+    <TableView fx:id="table"
+               prefWidth="900"
+               prefHeight="450">
+        <columns>
+            <TableColumn fx:id="idCol"          text="ID"           prefWidth="60"/>
+            <TableColumn fx:id="nameCol"        text="Name"         prefWidth="200"/>
+            <TableColumn fx:id="strengthCol"    text="Strength"     prefWidth="150"/>
+            <TableColumn fx:id="typeCol"        text="Type"         prefWidth="150"/>
+            <TableColumn fx:id="consumptionCol" text="Consumption"  prefWidth="200"/>
 
 <HBox spacing="15" alignment="CENTER">
         <Button fx:id="createButton" text="Create Medication" onAction="#handleCreate"/>
